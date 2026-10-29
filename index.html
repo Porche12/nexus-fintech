@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusFintech — Интеллектуальная Web3 & AI Платформа</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library from GitHub -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <!-- Vanilla Tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <!-- Dexie Database from GitHub -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Canvas Grid -->
+    <canvas id="bg-canvas"></canvas>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <i data-lucide="zap" class="logo-icon"></i>
+                <span class="logo-text">NexusFintech</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#features">Возможности</a>
+                <a href="#terminal">Инфраструктура</a>
+                <a href="#calculator">Калькулятор</a>
+                <a href="#database">База данных</a>
+                <a href="#pricing">Тарифы</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="openModal()">
+                    <i data-lucide="play" class="btn-icon"></i> Начать сейчас
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <div class="badge-pill">
+                    <span class="pulse-dot"></span> WebForge AI 2.0 • Автономная экосистема
+                </div>
+                <h1 class="hero-title">
+                    Инновации следующего поколения для <span class="gradient-text">NexusFintech</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Автоматизированная платформа с нулевой задержкой, встроенной реляционной базой данных и мгновенной масштабируемостью на глобальной инфраструктуре.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-glow" onclick="openModal()">
+                        <i data-lucide="rocket"></i> Развернуть узел
+                    </button>
+                    <a href="#features" class="btn btn-glass">
+                        <i data-lucide="compass"></i> Узнать больше
+                    </a>
+                </div>
+                <!-- Live Stats -->
+                <div class="stats-bar" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
+                        <span class="stat-number" id="uptime-stat">99.99%</span>
+                        <span class="stat-label">Uptime SLA</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">~1.2 ms</span>
+                        <span class="stat-label">Средний latency</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="tx-stat">4,829,120</span>
+                        <span class="stat-label">Транзакций/день</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid with 3D Tilt -->
+        <section id="features" class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Передовые технологии</h2>
+                <p class="section-desc">Архитектура высокой надежности с поддержкой открытого исходного кода GitHub</p>
+            </div>
+            <div class="features-grid">
+                <div class="tilt-card" data-tilt data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i data-lucide="cpu"></i></div>
+                    <h3>AI-Оптимизация</h3>
+                    <p>Нейросетевая балансировка нагрузки и предиктивное кэширование запросов пользователей.</p>
+                </div>
+                <div class="tilt-card" data-tilt data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i data-lucide="shield-check"></i></div>
+                    <h3>Zero-Trust Защита</h3>
+                    <p>Криптографическая верификация и сквозное шифрование сессий на уровне протокола.</p>
+                </div>
+                <div class="tilt-card" data-tilt data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i data-lucide="database"></i></div>
+                    <h3>WebAssembly База Данных</h3>
+                    <p>Реляционное хранилище Dexie/SQLite прямо в браузере с постоянной синхронизацией.</p>
+                </div>
+                <div class="tilt-card" data-tilt data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i data-lucide="refresh-cw"></i></div>
+                    <h3>Realtime Репликация</h3>
+                    <p>Поддержка WebSocket каналов с мгновенной доставкой событий без поллинга.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Calculator -->
+        <section id="calculator" class="section-container">
+            <div class="calculator-card" data-aos="zoom-in">
+                <div class="calc-header">
+                    <h2><i data-lucide="sliders"></i> Интерактивный калькулятор ресурсов</h2>
+                    <p>Настройте мощность кластера и оцените расчётную производительность</p>
+                </div>
+                <div class="calc-body">
+                    <div class="calc-control">
+                        <div class="calc-label-row">
+                            <span>Вычислительные ноды (Nodes):</span>
+                            <strong id="nodes-val">4 узла</strong>
+                        </div>
+                        <input type="range" id="nodes-slider" min="1" max="32" value="4" class="range-slider">
+                    </div>
+                    <div class="calc-control">
+                        <div class="calc-label-row">
+                            <span>Объём оперативной памяти (RAM):</span>
+                            <strong id="ram-val">16 GB</strong>
+                        </div>
+                        <input type="range" id="ram-slider" min="4" max="256" step="4" value="16" class="range-slider">
+                    </div>
+                    <div class="calc-results">
+                        <div class="res-box">
+                            <span class="res-title">Пропускная способность:</span>
+                            <span class="res-value" id="rps-res">12,500 RPS</span>
+                        </div>
+                        <div class="res-box highlight">
+                            <span class="res-title">Тариф в месяц:</span>
+                            <span class="res-value" id="price-res">$48.00 / мес</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- In-Browser Database Showcase -->
+        <section id="database" class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title"><i data-lucide="hard-drive"></i> Локальная база данных (Dexie / SQLite)</h2>
+                <p>Все транзакции сохраняются в локальное реактивное хранилище браузера</p>
+            </div>
+            <div class="db-panel" data-aos="fade-up">
+                <div class="db-form-row">
+                    <input type="text" id="db-item-name" placeholder="Название операции / контракта" class="input-field">
+                    <input type="number" id="db-item-amount" placeholder="Сумма ($)" class="input-field">
+                    <button class="btn btn-primary" onclick="addDbRecord()">
+                        <i data-lucide="plus"></i> Записать в БД
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Операция</th>
+                                <th>Сумма</th>
+                                <th>Время</th>
+                                <th>Действие</th>
+                            </tr>
+                        </thead>
+                        <tbody id="db-records-body">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Form -->
+    <div id="actionModal" class="modal-backdrop">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Запустить сервис</h3>
+                <button class="close-btn" onclick="closeModal()"><i data-lucide="x"></i></button>
+            </div>
+            <form id="lead-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" id="client-name" required placeholder="Александр" class="input-field">
+                </div>
+                <div class="form-group">
+                    <label>Email или Telegram</label>
+                    <input type="text" id="client-contact" required placeholder="@username или email" class="input-field">
+                </div>
+                <div class="form-group">
+                    <label>Комментарий / Направление</label>
+                    <textarea id="client-comment" rows="3" placeholder="Опишите задачу или проект..." class="input-field"></textarea>
+                </div>
+                <button type="submit" class="btn btn-glow full-width">
+                    <i data-lucide="check"></i> Подтвердить и развернуть
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-text">NexusFintech</span>
+                <p>© 2026 NexusFintech. Разработано и развернуто автономной системой WebForge AI.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/Porche12" target="_blank"><i data-lucide="github"></i> Porche12 GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
